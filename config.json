@@ -1,0 +1,86 @@
+{
+    "log": {
+        "access": "/var/log/v2ray/access.log",
+        "error": "/var/log/v2ray/error.log",
+        "loglevel": "debug"
+    },
+    "inbound": {
+        "port": 31560,
+        "protocol": "vmess",
+        "settings": {
+            "clients": [
+		{
+                "id": "71383eca-242f-4979-b9aa-a3718d67d8b0",
+                "level": 1,
+"security": "aes-128-cfb",
+                "alterId": 64
+            },
+		{
+                "id": "4f20cbf1-6320-4288-8caf-a8fc8a844e1b",
+                "level": 1,
+"security": "aes-128-cfb",
+                "alterId": 64
+            }
+]
+        }
+    },
+    "inboundDetour": [{
+        "protocol": "shadowsocks",
+        "port": 31561,
+        "tag": "in-ss",
+        "settings": {
+            "method": "aes-128-cfb",
+            "password": "singleissimple",
+            "udp": true,
+            "ota": false
+        }
+    }],
+    "outbound": {
+        "protocol": "freedom",
+        "settings": {}
+    },
+    "outboundDetour": [{
+            "protocol": "blackhole",
+            "settings": {},
+            "tag": "blocked"
+        },
+        {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "out-freedom"
+        }
+    ],
+    "routing": {
+        "strategy": "rules",
+        "settings": {
+            "rules": [{
+                    "type": "field",
+                    "ip": [
+                        "0.0.0.0/8",
+                        "10.0.0.0/8",
+                        "100.64.0.0/10",
+                        "127.0.0.0/8",
+                        "169.254.0.0/16",
+                        "172.16.0.0/12",
+                        "192.0.0.0/24",
+                        "192.0.2.0/24",
+                        "192.168.0.0/16",
+                        "192.18.0.0/15",
+                        "203.0.113.0/24",
+                        "::1/128",
+                        "fc00::/7",
+                        "fe80::/10"
+                    ],
+                    "touboundTag": "blocked"
+                },
+                {
+                    "type": "field",
+                    "inboundTag": [
+                        "in-ss"
+                    ],
+                    "outboundTag": "out-freedom"
+                }
+            ]
+        }
+    }
+}
