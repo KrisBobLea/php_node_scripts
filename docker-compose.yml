@@ -2,27 +2,25 @@ version: "3"
 services:
 
   mfpad:
-    # build: ./mfpad/
     image: mio101/php_node_scripts
     ports:
       - "80:80"
-    # volumes:
-    #   - ./mfpad/html:/var/www/html
     environment:
       TZ: Asia/Shanghai
       MEMC_HOST: memcached
       MEMC_PORT: 11211
-    restart: always
     depends_on:
       - memcached
-    network_mode: "host"
+    restart: always
     logging:
       options:
         max-size: "10m"
         max-file: "10"
 
   memcached:
-    image: memcached:1.5.8-alpine
+    image: memcached:1.5.8
     restart: always
+    environment:
+      TZ: Asia/Shanghai
     ports:
       - "11211:11211"
