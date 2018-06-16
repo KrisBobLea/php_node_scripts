@@ -3,6 +3,8 @@ FROM php:7.2.6-apache-stretch
 # RUN sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
 #   sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
 
+COPY start.sh /
+
 RUN apt-get update && \
     # ---------- install php ext: zip
     apt-get install -y zlib1g-dev && \
@@ -26,3 +28,5 @@ RUN apt-get update && \
     # ---------- install memcached
     apt-get install -y memcached netcat && \
     service memcached start
+
+CMD ["bash", "/start.sh"]
