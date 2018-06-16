@@ -14,4 +14,5 @@ curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compos
 chmod +x /usr/local/bin/docker-compose
 
 # ------------------ start php node project ------------------
-docker-compose up -d
+# docker-compose up -d
+docker run -itd -p 80:80 -e TZ=Asia/Shanghai --restart always --log-opt max-size=10m --log-opt max-file=10 mio101/php_node_scripts

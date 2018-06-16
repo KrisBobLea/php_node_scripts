@@ -24,5 +24,5 @@ RUN apt-get update && \
     chown www-data node_set.php && \
     chmod -R 777 /var/www/html && \
     # ---------- install memcached
-    apt-get install memcached netcat && \
+    apt-get install -y memcached netcat && \
     service memcached start
