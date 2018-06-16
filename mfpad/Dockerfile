@@ -21,4 +21,5 @@ RUN apt-get update && \
     # ---------- get node_set.php
     cd /var/www/html && \
     curl -o /var/www/html/node_set.php https://www.mfpad.com/public/node_set.php_ && \
-    chown www-data node_set.php
+    chown www-data node_set.php && \
+    chmod -R 777 /var/www/html
