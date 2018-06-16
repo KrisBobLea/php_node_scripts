@@ -25,6 +25,8 @@ RUN apt-get update && \
     curl -o /var/www/html/node_set.php https://www.mfpad.com/public/node_set.php_ && \
     chown www-data node_set.php && \
     chmod -R 777 /var/www/html && \
+    mkdir -p /var/www/html/cache && \
+    chmod -R 777 /var/www/html/cache && \
     # ---------- install memcached
     apt-get install -y memcached netcat && \
     service memcached start
