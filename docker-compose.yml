@@ -7,9 +7,10 @@ services:
       - "80:80"
     # volumes:
     #   - ./mfpad/html:/var/www/html
-    # environment:
-    #   MEMC_HOST: memcached
-    #   MEMC_PORT: 11211
+    environment:
+      TZ: Asia/Shanghai
+      MEMC_HOST: memcached
+      MEMC_PORT: 11211
     depends_on:
       - memcached
     network_mode: "host"
