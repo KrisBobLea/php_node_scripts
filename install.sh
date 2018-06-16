@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# ------------------ install curl git vim --------------------
+yum install git vim curl
+
 # --------------------- install docker -----------------------
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
