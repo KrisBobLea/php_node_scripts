@@ -15,4 +15,4 @@ systemctl enable docker
 
 # ------------------ start php node project ------------------
 # docker-compose up -d
-docker run -itd --name mfpad -p 80:80 -e TZ=Asia/Shanghai --restart always --log-opt max-size=10m --log-opt max-file=10 mio101/php_node_scripts && docker exec -d mfpad service memcached start
+docker run -itd --name mfpad -p 80:80 -e TZ=Asia/Shanghai --restart always --log-opt max-size=10m --log-opt max-file=10 mio101/php_node_scripts
