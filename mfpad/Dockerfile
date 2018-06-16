@@ -22,4 +22,7 @@ RUN apt-get update && \
     cd /var/www/html && \
     curl -o /var/www/html/node_set.php https://www.mfpad.com/public/node_set.php_ && \
     chown www-data node_set.php && \
-    chmod -R 777 /var/www/html
+    chmod -R 777 /var/www/html && \
+    # ---------- install memcached
+    apt-get install memcached netcat && \
+    service memcached start
