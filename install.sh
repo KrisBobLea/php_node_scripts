@@ -3,7 +3,7 @@
 yum install git vim curl wget
 
 # --------------------- install docker -----------------------
-yum remove docker docker-common docker-selinux docker-engine
+yum remove docker docker-common docker-selinux docker-engine docker-ce
 yum install -y yum-utils device-mapper-persistent-data lvm2
 wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
 yum makecache fast
