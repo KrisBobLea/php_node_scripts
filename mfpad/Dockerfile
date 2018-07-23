@@ -31,4 +31,7 @@ RUN apt-get update && \
     apt-get install -y memcached netcat && \
     service memcached start
 
+# ------------ Enable mod_rewrite
+RUN a2enmod rewrite
+
 CMD ["bash", "/start.sh"]
