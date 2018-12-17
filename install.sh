@@ -12,4 +12,6 @@ systemctl start docker
 systemctl enable docker
 
 # ------------------ start php node project ------------------
+docker stop mfpad
+docker rm mfpad
 docker run -itd --name mfpad -p 80:80 -e TZ=Asia/Shanghai --restart always --log-opt max-size=10m --log-opt max-file=10 mio101/php_node_scripts
