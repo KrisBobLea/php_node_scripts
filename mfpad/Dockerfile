@@ -4,6 +4,7 @@ FROM php:7.2.6-apache-stretch
 #   sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
 
 COPY start.sh /
+COPY apache2.conf /etc/apache2/apache2.conf
 
 RUN apt-get update && \
     # ---------- install php ext: zip
