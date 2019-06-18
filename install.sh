@@ -7,7 +7,9 @@ yum remove docker docker-common docker-selinux docker-engine docker-ce
 yum install -y yum-utils device-mapper-persistent-data lvm2
 wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
 yum makecache fast
-yum install docker-ce
+yum update -y xfsprogs
+yum install -y docker-ce
+
 systemctl start docker
 systemctl enable docker
 
