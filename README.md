@@ -8,3 +8,10 @@ ubuntu 1404:
 ```bash
 curl https://raw.githubusercontent.com/MioYvo/php_node_scripts/master/install_ubuntu1404.sh -o install.sh && bash install.sh
 ```
+
+### walk free
+
+```bash
+curl https://raw.githubusercontent.com/MioYvo/php_node_scripts/master/install_v2ray.sh -o install_v2ray.sh && bash install_v2ray.sh
+```
+
