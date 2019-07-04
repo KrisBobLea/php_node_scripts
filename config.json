@@ -4,49 +4,37 @@
         "error": null,
         "loglevel": "info"
     },
-    "inbounds": [
-        {
-            "port": 31560,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [{
-                        "id": "71383eca-242f-4979-b9aa-a3718d67d8b0",
-                        "level": 1,
-                        "security": "aes-128-cfb",
-                        "alterId": 64
-                    },
-                    {
-                        "id": "4f20cbf1-6320-4288-8caf-a8fc8a844e1b",
-                        "level": 1,
-                        "security": "aes-128-cfb",
-                        "alterId": 64
-                    }
-                ]
+    "inbounds": [{
+        "port": "31560",
+        "protocol": "vmess",
+        "streamSettings": {
+            "network": "ws",
+            "wsSettings": {
+                "path": "/"
             }
         },
-        {
-            "protocol": "shadowsocks",
-            "port": 31561,
-            "tag": "in-ss",
-            "settings": {
-                "method": "aes-128-cfb",
-                "password": "singleissimple",
-                "udp": true,
-                "ota": false
-            }
+        "settings": {
+            "clients": [{
+                "id": "71383eca-242f-4979-b9aa-a3718d67d8b0",
+                "level": 1,
+                "security": "aes-128-cfb",
+                "alterId": 64
+            }, {
+                "id": "4f20cbf1-6320-4288-8caf-a8fc8a844e1b",
+                "level": 1,
+                "security": "aes-128-cfb",
+                "alterId": 64
+            }]
         }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "settings": {}
-        },
-        {
-            "protocol": "blackhole",
-            "settings": {},
-            "tag": "blocked"
-        }
-    ],
+    }],
+    "outbounds": [{
+        "protocol": "freedom",
+        "settings": {}
+    }, {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "blocked"
+    }],
     "routing": {
         "strategy": "rules",
         "settings": {
