@@ -3,12 +3,13 @@ FROM php:7.2.6-apache-stretch
 # RUN sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
 #   sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
 
-COPY start.sh /
 COPY apache2.conf /etc/apache2/apache2.conf
+COPY entrypoint.sh /usr/local/bin/entrypoint
 
-RUN apt-get update && \
+RUN sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
+    apt-get update && \
     # ---------- install php ext: zip
-    apt-get install -y zlib1g-dev && \
+    apt-get install -y zlib1g-dev dumb-init && \
     docker-php-ext-install zip && \
     # ---------- install php ext: memcache
     apt-get install -y --no-install-recommends unzip libssl-dev libpcre3 libpcre3-dev && \
@@ -21,18 +22,14 @@ RUN apt-get update && \
     make && make install && \
     echo "extension=memcache.so" > /usr/local/etc/php/conf.d/ext-memcache.ini && \
     rm -rf /tmp/pecl-memcache-php7 php7.zip && \
-    # ---------- get node_set.php
-    cd /var/www/html && \
-    curl -o /var/www/html/node_set.php https://www.mfpad.com/public/node_set.php_ && \
-    chown www-data node_set.php && \
-    chmod -R 777 /var/www/html && \
-    mkdir -p /var/www/html/cache && \
-    chmod -R 777 /var/www/html/cache && \
     # ---------- install memcached
     apt-get install -y memcached netcat && \
-    service memcached start
+    service memcached start && \
+    chmod +x /usr/local/bin/entrypoint
+
+WORKDIR /var/www/html
 
 # ------------ Enable mod_rewrite
 RUN a2enmod rewrite
 
-CMD ["bash", "/start.sh"]
+ENTRYPOINT ["dumb-init", "entrypoint"]

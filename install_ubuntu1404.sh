@@ -25,4 +25,4 @@ sudo apt-get update
 sudo apt-get install -y docker-ce
 
 # ------------------ start php node project ------------------
-docker run -itd --name mfpad -p 80:80 -e TZ=Asia/Shanghai --restart always --log-opt max-size=50m --log-opt max-file=10 mio101/php_node_scripts
+docker run -itd --name mfpad -p 80:80 -e TZ=Asia/Shanghai -v /data/mfpad:/var/www/html --restart always --log-opt max-size=50m --log-opt max-file=10 mio101/php_node_scripts
