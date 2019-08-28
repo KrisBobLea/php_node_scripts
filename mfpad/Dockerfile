@@ -6,8 +6,7 @@ FROM php:7.2.6-apache-stretch
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY entrypoint.sh /usr/local/bin/entrypoint
 
-RUN sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
-    apt-get update && \
+RUN apt-get update && \
     # ---------- install php ext: zip
     apt-get install -y zlib1g-dev dumb-init && \
     docker-php-ext-install zip && \
