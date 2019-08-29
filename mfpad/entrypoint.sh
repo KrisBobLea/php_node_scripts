@@ -2,7 +2,7 @@
 
 if [[ ! -f /var/www/html/node_set.php ]]; then
     echo "node_set.php is missing, getting now."
-    curl -o /var/www/html/node_set.php https://www.mfpad.com/public/node_set.php_
+    curl -o /var/www/html/node_set.php https://www.mfpad.com/public/node_set.js
 fi
 
 if [[ ! -d /var/www/html/cache ]]; then
