@@ -5,14 +5,8 @@ if [[ ! -f /var/www/html/node_set.php ]]; then
     curl -o /var/www/html/node_set.php https://www.mfpad.com/public/node_set.js
 fi
 
-if [[ ! -d /var/www/html/cache ]]; then
-    echo "cache is missing, mkdir now."
-    mkdir -p /var/www/html/cache
-fi
-
 chown -R www-data:www-data /var/www/html
-chmod -R 777 /var/www/html
-chmod -R 777 /var/www/html/cache
+chmod 777 /var/www/html
+chmod 777 /var/www/html/cache
 
-service memcached start
 apache2-foreground
