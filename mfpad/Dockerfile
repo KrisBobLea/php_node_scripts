@@ -8,7 +8,8 @@ COPY entrypoint.sh /usr/local/bin/entrypoint
 
 RUN apt-get update && \
     # ---------- install php ext: zip
-    apt-get install -y zlib1g-dev dumb-init openssl wget procps git && \
+    apt-get install -y zlib1g-dev dumb-init openssl wget procps git netcat libzip && \
+    chmod +x /usr/local/bin/entrypoint && \
     docker-php-ext-install zip && \
     # ---------- install php ext: memcache
     apt-get install -y --no-install-recommends unzip libssl-dev libpcre3 libpcre3-dev && \
@@ -20,10 +21,7 @@ RUN apt-get update && \
     ./configure --with-php-config=/usr/local/bin/php-config && \
     make && make install && \
     echo "extension=memcache.so" > /usr/local/etc/php/conf.d/ext-memcache.ini && \
-    rm -rf /tmp/pecl-memcache-php7 php7.zip && \
-    # ---------- install memcached
-    apt-get install -y netcat && \
-    chmod +x /usr/local/bin/entrypoint
+    rm -rf /tmp/pecl-memcache-php7 php7.zip
 
     # ---------- install swoole
 RUN cd /tmp && git clone https://github.com/swoole/swoole-src.git && \
