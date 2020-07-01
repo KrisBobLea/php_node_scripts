@@ -1,4 +1,4 @@
-FROM php:7.4-apache-stretch
+FROM php:7.3.19-apache-stretch
 
 # RUN sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
 #   sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
