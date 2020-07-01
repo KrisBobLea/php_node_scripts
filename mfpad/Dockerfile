@@ -8,9 +8,9 @@ COPY entrypoint.sh /usr/local/bin/entrypoint
 
 RUN apt-get update && \
     # ---------- install php ext: zip
-    apt-get install -y zlib1g-dev dumb-init openssl wget procps git netcat libzip && \
+    apt-get install -y zlib1g-dev dumb-init openssl wget procps git netcat && \
     chmod +x /usr/local/bin/entrypoint && \
-    docker-php-ext-install zip && \
+    # docker-php-ext-install zip && \
     # ---------- install php ext: memcache
     apt-get install -y --no-install-recommends unzip libssl-dev libpcre3 libpcre3-dev && \
     cd /tmp && \
