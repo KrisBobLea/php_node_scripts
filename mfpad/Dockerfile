@@ -1,4 +1,4 @@
-FROM php:7.3.19-apache-stretch
+FROM php:7.2.6-apache-stretch
 
 # RUN sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
 #   sed -i "s/deb.debian.org/mirrors.aliyun.com/g" /etc/apt/sources.list && \
@@ -10,7 +10,7 @@ RUN apt-get update && \
     # ---------- install php ext: zip
     apt-get install -y zlib1g-dev dumb-init openssl wget procps git netcat && \
     chmod +x /usr/local/bin/entrypoint && \
-    # docker-php-ext-install zip && \
+    docker-php-ext-install zip && \
     # ---------- install php ext: memcache
     apt-get install -y --no-install-recommends unzip libssl-dev libpcre3 libpcre3-dev && \
     cd /tmp && \
